@@ -33,12 +33,11 @@ public class Reservation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date devolutionDate;
     private String status = "created";
 
     @ManyToOne
-    @JsonIgnoreProperties({"reservation"})
+    @JsonIgnoreProperties({"reservations"})
     private Lib lib;
 
     @ManyToOne

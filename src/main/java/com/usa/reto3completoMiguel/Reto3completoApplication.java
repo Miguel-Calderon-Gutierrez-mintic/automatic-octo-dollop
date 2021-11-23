@@ -9,6 +9,4 @@ public class Reto3completoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Reto3completoApplication.class, args);                
 	}
-
-
 }

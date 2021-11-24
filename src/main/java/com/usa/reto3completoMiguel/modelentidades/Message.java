@@ -38,7 +38,7 @@ public class Message implements Serializable {
      * @ManyToMany(mappedBy = "messages") private List<Lib> libs;
      */
     @ManyToOne
-    @JsonIgnoreProperties({"messages", "client", "reservation"})
+    @JsonIgnoreProperties({"messages", "client", "reservations"})
     private Lib lib;
 
     @ManyToOne

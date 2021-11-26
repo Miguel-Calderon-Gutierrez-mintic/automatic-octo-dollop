@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -39,24 +39,21 @@ public class libRestController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Lib post(@RequestBody Lib lib) {
-        return libserver.guardar(lib);
+    public void post(@RequestBody Lib lib) {
+        libserver.guardar(lib);
     }
     
 
-    @GetMapping("/{id}")
-    public Object get(@PathVariable String id) {
-        return null;
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable String id, @RequestBody Object input) {
-        return null;
+    @PutMapping("/update")
+     @ResponseStatus(HttpStatus.CREATED)
+    public void put(@RequestBody Lib lib) {
+        libserver.update(lib);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        return null;
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+         libserver.delete(id);
     }
 
 }

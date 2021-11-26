@@ -6,12 +6,12 @@
 package com.usa.reto3completoMiguel.webcontroladores;
 
 import com.usa.reto3completoMiguel.modelentidades.Client;
-import com.usa.reto3completoMiguel.modelentidades.Lib;
 import com.usa.reto3completoMiguel.servicios.ClientService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
@@ -27,8 +28,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 @RequestMapping("/api/Client")
 public class ClientRestController {
-    
- @Autowired
+
+    @Autowired
     ClientService Clientserver;
 
     @GetMapping("/all")
@@ -37,24 +38,20 @@ public class ClientRestController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity post(@RequestBody Client Client) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public void post(@RequestBody Client Client) {
         Clientserver.guardar(Client);
-        return ResponseEntity.status(201).build();
     }
-    @GetMapping("/{id}")
-    public Object get(@PathVariable String id) {
-        return null;
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void put(@RequestBody Client Client) {
+        Clientserver.update(Client);
     }
-    
-    @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable String id, @RequestBody Object input) {
-        return null;
-    }
-    
-    
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        return null;
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+        Clientserver.delete(id);
     }
-    
 }
